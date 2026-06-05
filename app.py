@@ -43,7 +43,7 @@ LIGHT_CSS = r"""
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 .stApp {
-    background: #f8fafc;
+    background: #e2e8f0;
     font-family: 'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
     color: #1e293b;
 }
@@ -78,7 +78,7 @@ LIGHT_CSS = r"""
     background: #ffffff;
     border-radius: 8px 8px 0 0;
     padding: 0;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-bottom: none;
     gap: 0;
 }
@@ -88,7 +88,7 @@ LIGHT_CSS = r"""
     font-weight: 600;
     font-size: 0.9rem;
     padding: 14px 32px;
-    border-right: 1px solid #e2e8f0;
+    border-right: 1px solid #cbd5e1;
     transition: all 0.2s;
 }
 .stTabs [data-baseweb="tab"]:hover {
@@ -104,7 +104,7 @@ LIGHT_CSS = r"""
 /* ── Premium Cards ── */
 .vc-card {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-radius: 8px;
     padding: 24px;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
@@ -117,13 +117,13 @@ LIGHT_CSS = r"""
     letter-spacing: 1.5px;
     margin-bottom: 16px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #f1f5f9;
+    border-bottom: 2px solid #cbd5e1;
 }
 
 /* ── Balanced Metrics ── */
 .vc-metric {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-top: 3px solid #1e3a8a;
     border-radius: 8px;
     padding: 20px 16px;
@@ -162,7 +162,7 @@ LIGHT_CSS = r"""
 /* ── Claims Report ── */
 .claim-ticket {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-radius: 8px;
     padding: 32px;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
@@ -175,14 +175,14 @@ LIGHT_CSS = r"""
     letter-spacing: 2px;
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 2px solid #f1f5f9;
+    border-bottom: 2px solid #cbd5e1;
 }
 .claim-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #cbd5e1;
     font-size: 0.9rem;
 }
 .claim-row:last-child { border-bottom: none; }
@@ -205,8 +205,8 @@ LIGHT_CSS = r"""
 
 /* ── File Uploader Override ── */
 [data-testid="stFileUploader"] {
-    background: #f8fafc;
-    border: 2px dashed #cbd5e1;
+    background: #e2e8f0;
+    border: 2px dashed #94a3b8;
     border-radius: 8px;
     padding: 12px;
     transition: all 0.2s;
@@ -244,8 +244,8 @@ LIGHT_CSS = r"""
 
 /* ── Professional Chat Bubble System ── */
 .chat-bubble-bot {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
     border-left: 4px solid #1e3a8a;
     border-radius: 0 10px 10px 10px;
     padding: 14px 18px;
@@ -301,7 +301,7 @@ LIGHT_CSS = r"""
 .stMarkdown p { color: #475569; line-height: 1.7; }
 [data-testid="stSidebar"] {
     background: #ffffff;
-    border-right: 1px solid #e2e8f0;
+    border-right: 1px solid #cbd5e1;
 }
 .stSpinner > div {
     border-top-color: #1e3a8a !important;
@@ -313,13 +313,13 @@ LIGHT_CSS = r"""
     color: #166534 !important;
 }
 section[data-testid="stMain"] {
-    background: #f8fafc !important;
+    background: #e2e8f0 !important;
     padding: 2rem 3rem 5rem !important;
 }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-track { background: #e2e8f0; }
 ::-webkit-scrollbar-thumb {
     background: #cbd5e1;
     border-radius: 3px;
@@ -334,7 +334,7 @@ section[data-testid="stMain"] {
     overflow-y: auto;
     padding: 1.5rem;
     background: #ffffff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-radius: 8px;
     margin-bottom: 1.5rem;
     display: flex;
@@ -371,6 +371,14 @@ section[data-testid="stMain"] {
 .stDownloadButton > button:hover {
     background: #1e3a8a;
     color: #ffffff;
+}
+
+/* Ensure sidebar collapse/expand buttons are visible */
+[data-testid="stSidebar"] button svg,
+[data-testid="stSidebarCollapseButton"] button svg,
+[data-testid="collapsedControl"] button svg {
+    fill: #1e3a8a !important;
+    color: #1e3a8a !important;
 }
 </style>
 """
@@ -710,6 +718,14 @@ section[data-testid="stMain"] {
 .stDownloadButton > button:hover {
     background: #3b82f6;
     color: #1e293b;
+}
+
+/* Ensure sidebar collapse/expand/hamburger buttons are visible */
+[data-testid="stSidebar"] button svg,
+[data-testid="stSidebarCollapseButton"] button svg,
+[data-testid="collapsedControl"] button svg {
+    fill: #60a5fa !important;
+    color: #60a5fa !important;
 }
 </style>
 """
