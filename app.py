@@ -38,7 +38,7 @@ theme_mode = st.session_state.theme_mode_select
 
 LIGHT_CSS = r"""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -61,6 +61,7 @@ LIGHT_CSS = r"""
     margin-bottom: 28px;
 }
 .main-header h1 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     font-size: 1.8rem;
     font-weight: 800;
     color: #1e3a8a;
@@ -385,7 +386,7 @@ section[data-testid="stMain"] {
 
 DARK_CSS = r"""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -408,6 +409,7 @@ DARK_CSS = r"""
     margin-bottom: 28px;
 }
 .main-header h1 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     font-size: 1.8rem;
     font-weight: 800;
     color: #3b82f6;
