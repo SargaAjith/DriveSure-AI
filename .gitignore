@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local databases
+*.db
+*.sqlite
+*.db-journal
+*.sqlite3
+
+# Temp uploads & debug outputs
+_tmp_upload_*
+annotated_output.jpg
+debug_*.jpg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Datasets and training outputs
+data/
+data_v2/
+runs/
+
+# Large model backups
+*backup*.pt
+yolov8n-seg.pt
+
+# System files
+.DS_Store
+Thumbs.db

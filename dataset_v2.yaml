@@ -1,0 +1,5 @@
+path: C:\AIPA_SARGA\Capstone Project\masks_human_project1\Car Insurence Claim Best\masks_human_project\data_v2
+train: images/train
+val: images/val
+names:
+  0: damage
