@@ -58,7 +58,8 @@ def verify_vehicle(image_path: str) -> bool:
         import numpy as np
 
         # Use YOLOv8 nano for fast classification
-        verify_model = YOLO("yolov8n.pt")
+        verify_model_path = os.path.join(PROJECT_ROOT, "yolov8n.pt")
+        verify_model = YOLO(verify_model_path)
         results = verify_model(
             image_path,
             verbose=False,
