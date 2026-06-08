@@ -28,6 +28,8 @@ except ImportError:
     CV2_AVAILABLE = False
     print("[WARN] opencv-python not installed — texture analysis disabled")
 
+LAST_VERIFY_ERROR = ""
+
 # ─── Severity Details Lookup ──────────────────────────────────────────────────
 SEVERITY_DETAILS = {
     "No Damage": ((100, 200, 100),   0,       0),
@@ -117,6 +119,8 @@ def verify_vehicle(image_path: str) -> bool:
         return True
 
     except Exception as e:
+        global LAST_VERIFY_ERROR
+        LAST_VERIFY_ERROR = str(e)
         print(f"[Verify] Error: {e}")
         # On error, reject to be safe
         return False
@@ -485,17 +489,18 @@ def predict(image_path: str,
 
         # ── Step 2: Vehicle Verification (only if no damage polygons detected by YOLO) ──
         if len(polygons) == 0 and not verify_vehicle(image_path):
+            error_details = f" (Debug details: {LAST_VERIFY_ERROR})" if LAST_VERIFY_ERROR else ""
             return {
                 "annotated_image": pil_img,
                 "damage_fraction": 0.0,
                 "damage_pct":      0.0,
                 "severity":        "Invalid Image",
                 "severity_color":  (156, 163, 175),
-                "cost_range_inr":  "This image does not appear to contain a motor vehicle. Please upload a clear photograph of the damaged car, motorcycle, or truck to proceed with your claim.",
+                "cost_range_inr":  f"This image does not appear to contain a motor vehicle. Please upload a clear photograph of the damaged car, motorcycle, or truck to proceed with your claim.{error_details}",
                 "polygon_count":   0,
                 "source":          "AI-Verifier",
                 "confidence":      1.0,
-                "what_i_see":      "Image rejected: no motor vehicle detected. Please upload a vehicle photograph.",
+                "what_i_see":      f"Image rejected: no motor vehicle detected.{error_details}",
             }
 
     except Exception as e:
