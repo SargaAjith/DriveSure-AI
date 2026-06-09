@@ -826,16 +826,6 @@ with st.sidebar:
         key="theme_mode_select"
     )
 
-    st.markdown(f'<div style="font-size:0.85rem;font-weight:700;color:{sb_header_color};margin-bottom:0.4rem;margin-top:1rem;">GEMINI API KEY</div>', unsafe_allow_html=True)
-    st.text_input(
-        "Gemini API Key",
-        value=st.session_state.get("user_gemini_api_key", ""),
-        type="password",
-        placeholder="Paste your Gemini API Key here...",
-        label_visibility="collapsed",
-        key="user_gemini_api_key"
-    )
-
 # ─── Helper: format chat text ────────────────────────────────────────────────
 def _fmt(raw_text: str) -> str:
     """Convert markdown bold and newlines to HTML for chat bubbles."""
