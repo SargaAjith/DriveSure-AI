@@ -1295,10 +1295,8 @@ with tab2:
                     role="user",
                     content=doc_query
                 )
-                # Get LLM response
-                response = get_chatbot_response(
-                    st.session_state.messages
-                )
+                # Get local response without API
+                response = chatbot.FAQ_KB["documents"]
                 st.session_state.messages.append({
                     "role": "assistant",
                     "content": response
@@ -1348,10 +1346,8 @@ with tab2:
                     role="user",
                     content=timeline_query
                 )
-                # Get LLM response
-                response = get_chatbot_response(
-                    st.session_state.messages
-                )
+                # Get local response without API
+                response = chatbot.FAQ_KB["time"]
                 st.session_state.messages.append({
                     "role": "assistant",
                     "content": response
