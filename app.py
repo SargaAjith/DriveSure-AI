@@ -826,6 +826,16 @@ with st.sidebar:
         key="theme_mode_select"
     )
 
+    st.markdown(f'<div style="font-size:0.85rem;font-weight:700;color:{sb_header_color};margin-bottom:0.4rem;margin-top:1rem;">GEMINI API KEY</div>', unsafe_allow_html=True)
+    st.text_input(
+        "Gemini API Key",
+        value=st.session_state.get("user_gemini_api_key", ""),
+        type="password",
+        placeholder="Paste your Gemini API Key here...",
+        label_visibility="collapsed",
+        key="user_gemini_api_key"
+    )
+
 # ─── Helper: format chat text ────────────────────────────────────────────────
 def _fmt(raw_text: str) -> str:
     """Convert markdown bold and newlines to HTML for chat bubbles."""
@@ -854,8 +864,24 @@ Guide users step by step through their vehicle insurance claim.
         import google.generativeai as genai
         import time
 
-        # Configure API key from environment or default key
-        api_key = os.environ.get("GEMINI_API_KEY", "AIzaSyBhJZF17-0EgQRKBg3vBg4FS73aSm0vaD4")
+        # Configure API key from user input sidebar, environment, or Streamlit Secrets
+        api_key = (
+            st.session_state.get("user_gemini_api_key")
+            or os.environ.get("GEMINI_API_KEY")
+        )
+        if not api_key:
+            try:
+                api_key = st.secrets["GEMINI_API_KEY"]
+            except Exception:
+                pass
+
+        if not api_key:
+            return (
+                "Please configure your Gemini API Key in the system settings sidebar, "
+                "set it as a Streamlit Secret, or define it as the GEMINI_API_KEY "
+                "environment variable to start chatting."
+            )
+
         genai.configure(api_key=api_key)
 
         contents = []

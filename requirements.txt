@@ -5,3 +5,4 @@ numpy>=1.26.0
 pillow>=11.0.0
 matplotlib>=3.8.0
 scikit-learn>=1.4.0
+google-generativeai>=0.8.6
