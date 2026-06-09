@@ -478,7 +478,8 @@ def _process_message_impl(session_id: str, user_text: str, detection_context: di
 
     # COLLECT EMAIL
     elif state == STATE_COLLECT_EMAIL:
-        if "@" not in text or "." not in text:
+        email_regex = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|org|net|co|edu|gov|info|biz|me|ai)$"
+        if not re.match(email_regex, text):
             reply = "Please enter a valid email address (e.g. name@example.com)."
         else:
             claim["email"] = text.lower()
@@ -489,10 +490,15 @@ def _process_message_impl(session_id: str, user_text: str, detection_context: di
     # COLLECT PHONE
     elif state == STATE_COLLECT_PHONE:
         digits = re.sub(r"\D", "", text)
-        if len(digits) < 10:
+        if len(digits) == 12 and digits.startswith("91"):
+            digits = digits[2:]
+        elif len(digits) == 11 and digits.startswith("0"):
+            digits = digits[1:]
+            
+        if len(digits) != 10:
             reply = "Please enter a valid 10-digit mobile number."
         else:
-            claim["phone"] = digits[-10:]
+            claim["phone"] = digits
             session["state"] = STATE_COLLECT_DATE
             reply = ("Phone number saved.\n\n"
                      "**Step 5/10** — When did the incident occur?\n"
@@ -526,53 +532,90 @@ def _process_message_impl(session_id: str, user_text: str, detection_context: di
     elif state == STATE_COLLECT_MOVING_PARKED:
         if text.strip() == "1" or "moving" in text_low:
             claim["is_moving"] = "moving"
+            session["state"] = STATE_COLLECT_COLLISION_TYPE
+            reply = ("Details recorded.\n\n"
+                     "**Step 8/10** — What type of event was it?\n\n"
+                     "1. Collision with another vehicle or object\n"
+                     "2. Non-collision event (theft, weather, flood, fire, animal collision, etc.)\n"
+                     "3. Windshield/glass damage only\n\n"
+                     "_(Please type the number or write the category)_")
         elif text.strip() == "2" or "parked" in text_low:
             claim["is_moving"] = "parked"
+            session["state"] = STATE_COLLECT_COLLISION_TYPE
+            reply = ("Details recorded.\n\n"
+                     "**Step 8/10** — What type of event was it?\n\n"
+                     "1. Collision with another vehicle or object\n"
+                     "2. Non-collision event (theft, weather, flood, fire, animal collision, etc.)\n"
+                     "3. Windshield/glass damage only\n\n"
+                     "_(Please type the number or write the category)_")
         else:
-            claim["is_moving"] = text.strip()
-            
-        session["state"] = STATE_COLLECT_COLLISION_TYPE
-        reply = ("Details recorded.\n\n"
-                 "**Step 8/10** — What type of event was it?\n\n"
-                 "1. Collision with another vehicle or object\n"
-                 "2. Non-collision event (theft, weather, flood, fire, animal collision, etc.)\n"
-                 "3. Windshield/glass damage only\n\n"
-                 "_(Please type the number or write the category)_")
+            reply = ("Please select a valid option:\n"
+                     "1. Moving\n"
+                     "2. Parked\n\n"
+                     "Please type 1 or 2, or write 'moving' or 'parked'.")
 
     # COLLECT COLLISION TYPE
     elif state == STATE_COLLECT_COLLISION_TYPE:
         if text.strip() == "1" or "collision" in text_low:
             claim["collision_type"] = "collision"
+            session["state"] = STATE_COLLECT_POLICY_TYPE
+            reply = ("Event type recorded.\n\n"
+                     "**Step 9/10** — What type of insurance policy do you hold for this vehicle?\n\n"
+                     "1. Third Party Only (TP)\n"
+                     "2. Comprehensive (OD + TP)\n"
+                     "3. Zero Depreciation (Zero Dep)\n\n"
+                     "_(Please select the option or write the policy type)_")
         elif text.strip() == "2" or "non" in text_low or "theft" in text_low or "weather" in text_low or "flood" in text_low or "fire" in text_low or "animal" in text_low:
             claim["collision_type"] = "non-collision"
+            session["state"] = STATE_COLLECT_POLICY_TYPE
+            reply = ("Event type recorded.\n\n"
+                     "**Step 9/10** — What type of insurance policy do you hold for this vehicle?\n\n"
+                     "1. Third Party Only (TP)\n"
+                     "2. Comprehensive (OD + TP)\n"
+                     "3. Zero Depreciation (Zero Dep)\n\n"
+                     "_(Please select the option or write the policy type)_")
         elif text.strip() == "3" or "glass" in text_low or "windshield" in text_low:
             claim["collision_type"] = "glass/windshield"
+            session["state"] = STATE_COLLECT_POLICY_TYPE
+            reply = ("Event type recorded.\n\n"
+                     "**Step 9/10** — What type of insurance policy do you hold for this vehicle?\n\n"
+                     "1. Third Party Only (TP)\n"
+                     "2. Comprehensive (OD + TP)\n"
+                     "3. Zero Depreciation (Zero Dep)\n\n"
+                     "_(Please select the option or write the policy type)_")
         else:
-            claim["collision_type"] = text.strip()
-            
-        session["state"] = STATE_COLLECT_POLICY_TYPE
-        reply = ("Event type recorded.\n\n"
-                 "**Step 9/10** — What type of insurance policy do you hold for this vehicle?\n\n"
-                 "1. Third Party Only (TP)\n"
-                 "2. Comprehensive (OD + TP)\n"
-                 "3. Zero Depreciation (Zero Dep)\n\n"
-                 "_(Please select the option or write the policy type)_")
+            reply = ("Please select a valid option:\n"
+                     "1. Collision with another vehicle or object\n"
+                     "2. Non-collision event\n"
+                     "3. Windshield/glass damage only\n\n"
+                     "Please type 1, 2, or 3, or write the category.")
 
     # COLLECT POLICY TYPE
     elif state == STATE_COLLECT_POLICY_TYPE:
         if text.strip() == "1" or "third" in text_low or "tp" in text_low:
             claim["policy_type"] = "Third Party Only"
+            session["state"] = STATE_COLLECT_DEDUCTIBLE
+            reply = ("Policy type recorded.\n\n"
+                     "**Step 10/10** — What is your **compulsory excess / deductible** amount if known?\n\n"
+                     "_(e.g., ₹1,000, ₹2,000 for standard IRDAI cars. Type 'not known' or write 'skip' to use standard ₹1,000)_")
         elif text.strip() == "2" or "comprehensive" in text_low:
             claim["policy_type"] = "Comprehensive"
+            session["state"] = STATE_COLLECT_DEDUCTIBLE
+            reply = ("Policy type recorded.\n\n"
+                     "**Step 10/10** — What is your **compulsory excess / deductible** amount if known?\n\n"
+                     "_(e.g., ₹1,000, ₹2,000 for standard IRDAI cars. Type 'not known' or write 'skip' to use standard ₹1,000)_")
         elif text.strip() == "3" or "zero" in text_low or "dep" in text_low:
             claim["policy_type"] = "Zero Depreciation"
+            session["state"] = STATE_COLLECT_DEDUCTIBLE
+            reply = ("Policy type recorded.\n\n"
+                     "**Step 10/10** — What is your **compulsory excess / deductible** amount if known?\n\n"
+                     "_(e.g., ₹1,000, ₹2,000 for standard IRDAI cars. Type 'not known' or write 'skip' to use standard ₹1,000)_")
         else:
-            claim["policy_type"] = text.strip()
-            
-        session["state"] = STATE_COLLECT_DEDUCTIBLE
-        reply = ("Policy type recorded.\n\n"
-                 "**Step 10/10** — What is your **compulsory excess / deductible** amount if known?\n\n"
-                 "_(e.g., ₹1,000, ₹2,000 for standard IRDAI cars. Type 'not known' or write 'skip' to use standard ₹1,000)_")
+            reply = ("Please select a valid policy type:\n"
+                     "1. Third Party Only (TP)\n"
+                     "2. Comprehensive (OD + TP)\n"
+                     "3. Zero Depreciation (Zero Dep)\n\n"
+                     "Please type 1, 2, or 3, or write your policy type.")
 
     # COLLECT DEDUCTIBLE
     elif state == STATE_COLLECT_DEDUCTIBLE:

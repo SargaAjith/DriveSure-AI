@@ -391,9 +391,9 @@ DARK_CSS = r"""
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 .stApp {
-    background: #334155;
+    background: #0f172a;
     font-family: 'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
-    color: #334155;
+    color: #cbd5e1;
 }
 
 /* ── Corporate Header ── */
@@ -401,8 +401,8 @@ DARK_CSS = r"""
     background: #1e293b;
     border-radius: 0;
     padding: 24px 40px;
-    border-bottom: 3px solid #3b82f6;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border-bottom: 3px solid #2563eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -412,7 +412,7 @@ DARK_CSS = r"""
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     font-size: 1.8rem;
     font-weight: 800;
-    color: #3b82f6;
+    color: #60a5fa;
     letter-spacing: -0.5px;
 }
 .main-header p {
@@ -442,11 +442,11 @@ DARK_CSS = r"""
 }
 .stTabs [data-baseweb="tab"]:hover {
     background: #334155;
-    color: #3b82f6;
+    color: #60a5fa;
 }
 .stTabs [aria-selected="true"] {
-    background: #3b82f6 !important;
-    color: #1e293b !important;
+    background: #2563eb !important;
+    color: #ffffff !important;
     font-weight: 700 !important;
 }
 
@@ -456,12 +456,12 @@ DARK_CSS = r"""
     border: 1px solid #334155;
     border-radius: 8px;
     padding: 24px;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
 }
 .vc-card-title {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #3b82f6;
+    color: #60a5fa;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-bottom: 16px;
@@ -473,18 +473,18 @@ DARK_CSS = r"""
 .vc-metric {
     background: #1e293b;
     border: 1px solid #334155;
-    border-top: 3px solid #3b82f6;
+    border-top: 3px solid #2563eb;
     border-radius: 8px;
     padding: 20px 16px;
     text-align: center;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
 }
 .vc-metric-value {
     font-size: 2rem;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 8px;
-    color: #334155;
+    color: #f8fafc;
 }
 .vc-metric-label {
     font-size: 0.7rem;
@@ -514,12 +514,12 @@ DARK_CSS = r"""
     border: 1px solid #334155;
     border-radius: 8px;
     padding: 32px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
 }
 .claim-ticket h3 {
     font-size: 0.85rem;
     font-weight: 800;
-    color: #3b82f6;
+    color: #60a5fa;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 24px;
@@ -543,7 +543,7 @@ DARK_CSS = r"""
     letter-spacing: 0.8px;
 }
 .claim-value {
-    color: #334155;
+    color: #f8fafc;
     font-weight: 600;
 }
 .claim-cost {
@@ -554,22 +554,22 @@ DARK_CSS = r"""
 
 /* ── File Uploader Override ── */
 [data-testid="stFileUploader"] {
-    background: #334155;
+    background: #1e293b;
     border: 2px dashed #475569;
     border-radius: 8px;
     padding: 12px;
     transition: all 0.2s;
 }
 [data-testid="stFileUploader"]:hover {
-    border-color: #3b82f6;
-    background: #334155;
+    border-color: #2563eb;
+    background: #1e293b;
 }
 
 /* ── Flat Action Buttons ── */
 .stButton > button,
 .stFormSubmitButton > button {
-    background: #3b82f6;
-    color: #1e293b;
+    background: #2563eb;
+    color: #ffffff;
     border: none;
     border-radius: 6px;
     font-weight: 700;
@@ -577,13 +577,13 @@ DARK_CSS = r"""
     padding: 12px 24px;
     letter-spacing: 0.4px;
     transition: all 0.2s;
-    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
 }
 .stButton > button:hover,
 .stFormSubmitButton > button:hover {
-    background: #60a5fa;
+    background: #3b82f6;
     transform: translateY(-1px);
-    box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.3);
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
 }
 .stButton > button:active,
 .stFormSubmitButton > button:active {
@@ -594,22 +594,22 @@ DARK_CSS = r"""
 /* ── Professional Chat Bubble System ── */
 .chat-bubble-bot {
     background: #334155;
-    border: 1px solid #334155;
+    border: 1px solid #475569;
     border-left: 4px solid #3b82f6;
     border-radius: 0 10px 10px 10px;
     padding: 14px 18px;
-    color: #334155;
+    color: #f8fafc;
     font-size: 0.9rem;
     line-height: 1.65;
     max-width: 85%;
     margin-bottom: 12px;
 }
 .chat-bubble-user {
-    background: #3b82f6;
+    background: #2563eb;
     border: none;
     border-radius: 10px 0 10px 10px;
     padding: 14px 18px;
-    color: #1e293b;
+    color: #ffffff;
     font-size: 0.9rem;
     line-height: 1.65;
     max-width: 85%;
@@ -647,13 +647,16 @@ DARK_CSS = r"""
 }
 
 /* ── Custom overrides ── */
-.stMarkdown p { color: #475569; line-height: 1.7; }
+.stMarkdown p, .stMarkdown li { color: #cbd5e1; line-height: 1.7; }
+.stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6 {
+    color: #f8fafc;
+}
 [data-testid="stSidebar"] {
     background: #1e293b;
     border-right: 1px solid #334155;
 }
 .stSpinner > div {
-    border-top-color: #3b82f6 !important;
+    border-top-color: #2563eb !important;
 }
 .stSuccess {
     background: #064e3b !important;
@@ -662,19 +665,51 @@ DARK_CSS = r"""
     color: #a7f3d0 !important;
 }
 section[data-testid="stMain"] {
-    background: #334155 !important;
+    background: #0f172a !important;
     padding: 2rem 3rem 5rem !important;
+}
+
+/* Override hardcoded #475569 color inside markdown divs (like the footer) in dark mode */
+div[style*="color:#475569"], div[style*="color: #475569"] {
+    color: #cbd5e1 !important;
+}
+
+/* Streamlit native widget styling overrides */
+div[data-testid="stTextInput"] input {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+}
+div[data-testid="stTextInput"] input::placeholder {
+    color: #64748b !important;
+}
+div[data-baseweb="select"] > div {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+}
+ul[role="listbox"] {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+ul[role="listbox"] li {
+    color: #cbd5e1 !important;
+    background-color: #1e293b !important;
+}
+ul[role="listbox"] li:hover {
+    background-color: #334155 !important;
+    color: #f8fafc !important;
 }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #334155; }
+::-webkit-scrollbar-track { background: #0f172a; }
 ::-webkit-scrollbar-thumb {
-    background: #475569;
+    background: #334155;
     border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #3b82f6;
+    background: #2563eb;
 }
 
 /* ── Chat Container ── */
@@ -689,7 +724,7 @@ section[data-testid="stMain"] {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.01);
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.2);
 }
 .chat-time {
     font-size: 0.72rem;
@@ -700,7 +735,7 @@ section[data-testid="stMain"] {
 .chat-avatar-bot {
     font-size: 0.85rem;
     font-weight: 700;
-    color: #3b82f6;
+    color: #60a5fa;
     margin-right: 0.4rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -709,8 +744,8 @@ section[data-testid="stMain"] {
 /* ── Download Button ── */
 .stDownloadButton > button {
     background: #1e293b;
-    color: #3b82f6;
-    border: 1px solid #3b82f6;
+    color: #60a5fa;
+    border: 1px solid #60a5fa;
     border-radius: 6px;
     font-weight: 600;
     font-size: 0.9rem;
@@ -718,8 +753,9 @@ section[data-testid="stMain"] {
     transition: all 0.2s;
 }
 .stDownloadButton > button:hover {
-    background: #3b82f6;
-    color: #1e293b;
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
 }
 
 /* Ensure sidebar collapse/expand/hamburger buttons are visible */
@@ -797,6 +833,62 @@ def _fmt(raw_text: str) -> str:
     text = text.replace("\n", "<br>")
     text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
     return text
+
+def get_chatbot_response(messages: list) -> str:
+    try:
+        ctx = st.session_state.get("claim_context", {})
+        damage_context = ""
+        if ctx:
+            damage_context = f"""
+Active assessment:
+  Severity  : {ctx.get('severity','N/A')}
+  Damage    : {ctx.get('damage_pct','N/A')}%
+  Cost      : {ctx.get('cost_range','N/A')}
+Use these exact values if asked about costs.
+"""
+        SYSTEM_PROMPT = """You are ClaimBot, an expert auto insurance claim assistant for Indian users.
+Guide users step by step through their vehicle insurance claim.
+"""
+        full_prompt = SYSTEM_PROMPT + damage_context
+
+        import google.generativeai as genai
+        import time
+
+        # Configure API key from environment or default key
+        api_key = os.environ.get("GEMINI_API_KEY", "AIzaSyBhJZF17-0EgQRKBg3vBg4FS73aSm0vaD4")
+        genai.configure(api_key=api_key)
+
+        contents = []
+        for m in messages:
+            role = "user" if m["role"] == "user" else "model"
+            contents.append({
+                "role": role,
+                "parts": [m["content"]]
+            })
+
+        model = genai.GenerativeModel(
+            model_name="gemini-2.5-flash-lite",
+            system_instruction=full_prompt
+        )
+        
+        # Retry loop for rate limit (429) errors
+        for attempt in range(3):
+            try:
+                resp = model.generate_content(contents)
+                return resp.text
+            except Exception as e:
+                # If it's a 429 rate limit error, wait and retry
+                if "429" in str(e) and attempt < 2:
+                    time.sleep(1.5 * (attempt + 1))
+                    continue
+                raise e
+    except Exception as e:
+        return (
+            f"I apologise, I encountered "
+            f"an error processing your "
+            f"request. Please try again. "
+            f"({e})"
+        )
 
 # ─── Corporate Hero ──────────────────────────────────────────────────────────
 st.markdown("""
@@ -1034,6 +1126,22 @@ with tab1:
 # TAB 2 — INSURANCE CLAIM CHATBOT
 # ══════════════════════════════════════════════════════════════════════════════
 with tab2:
+    # Initialize chatbot variables
+    if "chat_step" not in st.session_state:
+        st.session_state.chat_step = 0
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+    if "claim_context" not in st.session_state:
+        if st.session_state.get("last_detection"):
+            det = st.session_state.get("last_detection")
+            st.session_state.claim_context = {
+                "severity": det.get("severity"),
+                "damage_pct": det.get("damage_pct"),
+                "cost_range": det.get("cost_range_inr")
+            }
+        else:
+            st.session_state.claim_context = {}
+
     chat_col, info_col = st.columns([1.6, 1], gap="large")
 
     with chat_col:
@@ -1094,31 +1202,180 @@ with tab2:
         st.markdown("**Quick Actions:**")
         qc1, qc2, qc3, qc4 = st.columns(4)
         with qc1:
-            if st.button("New Claim", use_container_width=True, key="qb1"):
-                sid = st.session_state.chat_session_id
-                _, h = chatbot.process_message(sid, "new claim")
-                st.session_state.chat_history = h
+            if st.button(
+                "New Claim",
+                key="btn_new_claim",
+                use_container_width=True
+            ):
+                # Reset session and start fresh claim
+                st.session_state.chat_step = 1
+                st.session_state.messages = []
+                st.session_state.chat_history = []
+                st.session_state.chat_session_id = \
+                    str(__import__('uuid')
+                        .uuid4())[:12]
+                
+                # Also reset the backend session inside chatbot.py
+                chatbot.reset_session(st.session_state.chat_session_id)
+                # Prime the backend claim flow
+                _, h = chatbot.process_message(st.session_state.chat_session_id, "new claim")
+                # Keep chat_history in sync with initial bot prompt
+                for msg in h:
+                    st.session_state.chat_history.append({
+                        "role": msg["role"],
+                        "text": msg["text"],
+                        "time": msg.get("time", "")
+                    })
+
+                # Create new DB session
+                import db
+                ctx = st.session_state.get(
+                    "claim_context", {})
+                db.create_session(
+                    session_id=st.session_state
+                        .chat_session_id,
+                    severity=ctx.get("severity"),
+                    damage_pct=ctx.get("damage_pct"),
+                    cost_range=ctx.get("cost_range")
+                )
                 st.rerun()
+
         with qc2:
-            if st.button("Documents Required", use_container_width=True, key="qb2"):
-                sid = st.session_state.chat_session_id
-                _, h = chatbot.process_message(sid, "what documents are required?")
-                st.session_state.chat_history = h
+            if st.button(
+                "Documents Required",
+                key="btn_docs",
+                use_container_width=True
+            ):
+                # Send fixed message to LLM
+                # DO NOT change chat_step
+                doc_query = (
+                    "What documents are required "
+                    "to submit an insurance claim?"
+                )
+                st.session_state.messages.append({
+                    "role": "user",
+                    "content": doc_query
+                })
+                # Sync chat_history
+                st.session_state.chat_history.append({
+                    "role": "user",
+                    "text": doc_query,
+                    "time": __import__('datetime').datetime.now().strftime("%I:%M %p")
+                })
+                import db
+                db.save_message(
+                    session_id=st.session_state
+                        .chat_session_id,
+                    role="user",
+                    content=doc_query
+                )
+                # Get LLM response
+                response = get_chatbot_response(
+                    st.session_state.messages
+                )
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": response
+                })
+                # Sync chat_history
+                st.session_state.chat_history.append({
+                    "role": "assistant",
+                    "text": response,
+                    "time": __import__('datetime').datetime.now().strftime("%I:%M %p")
+                })
+                db.save_message(
+                    session_id=st.session_state
+                        .chat_session_id,
+                    role="assistant",
+                    content=response
+                )
                 st.rerun()
+
         with qc3:
-            if st.button("Timeline Info", use_container_width=True, key="qb3"):
-                sid = st.session_state.chat_session_id
-                _, h = chatbot.process_message(sid, "how long does it take?")
-                st.session_state.chat_history = h
+            if st.button(
+                "Timeline Info",
+                key="btn_timeline",
+                use_container_width=True
+            ):
+                # Send fixed message to LLM
+                # DO NOT change chat_step
+                timeline_query = (
+                    "How long does each stage of "
+                    "the insurance claim process "
+                    "take? Please explain the "
+                    "complete timeline."
+                )
+                st.session_state.messages.append({
+                    "role": "user",
+                    "content": timeline_query
+                })
+                # Sync chat_history
+                st.session_state.chat_history.append({
+                    "role": "user",
+                    "text": timeline_query,
+                    "time": __import__('datetime').datetime.now().strftime("%I:%M %p")
+                })
+                import db
+                db.save_message(
+                    session_id=st.session_state
+                        .chat_session_id,
+                    role="user",
+                    content=timeline_query
+                )
+                # Get LLM response
+                response = get_chatbot_response(
+                    st.session_state.messages
+                )
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": response
+                })
+                # Sync chat_history
+                st.session_state.chat_history.append({
+                    "role": "assistant",
+                    "text": response,
+                    "time": __import__('datetime').datetime.now().strftime("%I:%M %p")
+                })
+                db.save_message(
+                    session_id=st.session_state
+                        .chat_session_id,
+                    role="assistant",
+                    content=response
+                )
                 st.rerun()
+
         with qc4:
-            if st.button("Reset Chat", use_container_width=True, key="qb4"):
-                old_sid = st.session_state.chat_session_id
-                chatbot.reset_session(old_sid)
-                new_sid = uuid.uuid4().hex
-                st.session_state.chat_session_id = new_sid
-                _, h = chatbot.process_message(new_sid, "hi")
-                st.session_state.chat_history = h
+            if st.button(
+                "Reset Chat",
+                key="btn_reset",
+                use_container_width=True,
+                type="secondary"
+            ):
+                # Clear chat history only
+                # Keep damage assessment context
+                st.session_state.messages = []
+                st.session_state.chat_history = []
+                st.session_state.chat_step = 0
+                st.session_state.chat_session_id = \
+                    str(__import__('uuid')
+                        .uuid4())[:12]
+                
+                # Reset chatbot backend session
+                chatbot.reset_session(st.session_state.chat_session_id)
+                # Initialize chatbot session
+                _, h = chatbot.process_message(st.session_state.chat_session_id, "hi")
+                for msg in h:
+                    st.session_state.chat_history.append({
+                        "role": msg["role"],
+                        "text": msg["text"],
+                        "time": msg.get("time", "")
+                    })
+
+                import db
+                db.create_session(
+                    session_id=st.session_state
+                        .chat_session_id
+                )
                 st.rerun()
 
     with info_col:
