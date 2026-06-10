@@ -109,3 +109,4 @@ Each image in `masks_human/` is a side-by-side PNG where:
 - **Right half** = human-annotated damage overlay (offset by 1 pixel)
 
 We extract the damage mask by computing the absolute pixel difference between both halves (threshold > 25). The resulting binary mask is then converted to YOLO polygon contours using OpenCV's `findContours`.
+"# DriveSure-AI" 
