@@ -999,14 +999,12 @@ with tab1:
 
                 st.image(ann_img, caption=f"{sev} damage — {dmg_pct}% area affected", use_container_width=True)
 
-                m1, m2, m3 = st.columns(3)
+                m1, m2 = st.columns(2)
                 sc = f"sev-{sev.lower()}"
                 with m1:
                     st.markdown(f'<div class="vc-metric"><div class="vc-metric-value {sc}">{dmg_pct}%</div><div class="vc-metric-label">Damage Area</div></div>', unsafe_allow_html=True)
                 with m2:
                     st.markdown(f'<div class="vc-metric"><div class="vc-metric-value {sc}">{sev}</div><div class="vc-metric-label">Severity</div></div>', unsafe_allow_html=True)
-                with m3:
-                    st.markdown(f'<div class="vc-metric"><div class="vc-metric-value" style="color:{sb_header_color};font-size:1.8rem;">{polys}</div><div class="vc-metric-label">Damage Zones</div></div>', unsafe_allow_html=True)
 
                 what_i_see = result.get("what_i_see", "No damage visible.")
                 now = datetime.datetime.now().strftime("%d %b %Y, %I:%M %p")
@@ -1017,7 +1015,6 @@ with tab1:
                     <div class="claim-row"><span class="claim-label">Image</span><span class="claim-value">{html.escape(uploaded.name)}</span></div>
                     <div class="claim-row"><span class="claim-label">Severity</span><span class="claim-value {sc}">{sev}</span></div>
                     <div class="claim-row"><span class="claim-label">Affected Area</span><span class="claim-value">{dmg_pct}% of visible surface</span></div>
-                    <div class="claim-row"><span class="claim-label">Damage Zones</span><span class="claim-value">{polys} region(s)</span></div>
                     <div class="claim-row"><span class="claim-label">Engine</span><span class="claim-value">{source} ({conf:.0%})</span></div>
                     <div class="claim-row"><span class="claim-label">AI Observation</span><span class="claim-value" style="color:{sb_header_color};font-style:italic;">{html.escape(what_i_see)}</span></div>
                     <div class="claim-row"><span class="claim-label">Estimated Repair Cost</span><span class="claim-cost">{cost_rng}</span></div>

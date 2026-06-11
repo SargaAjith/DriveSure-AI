@@ -440,8 +440,7 @@ def _local_analyze(image_path: str, sensitivity: float = 65.0) -> dict:
         parts = [f"Region {i+1}: detected damage zone"
                  for i in range(len(polygons))] or ["Vehicle body: damage detected"]
 
-    obs = (f"Local AI detected {damage_pct:.0f}% damage area "
-           f"across {len(polygons)} region(s)." if is_damaged
+    obs = (f"Local AI detected {damage_pct:.0f}% damage area." if is_damaged
            else "No significant structural damage detected.")
 
     print(f"[RESULT] damage_pct={damage_pct} severity={sev_key} "
